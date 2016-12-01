@@ -7,3 +7,6 @@ spring.datasource:
 spring:
   thymeleaf:
     cache: false
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: org.wcb.entity

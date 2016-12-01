@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.wcb.config.Application;
+import org.wcb.Application;
 import org.wcb.entity.Book;
 import org.wcb.mapper.BookMapper;
 
