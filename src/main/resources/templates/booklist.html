@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"/>
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div>
+    <h2 style="border-bottom: 1px solid #ddd;">
+        <div>Book List</div>
+        <div style="font-size: 15px">
+            <form action="/book/search">
+                <label>keyword: <input type="text" name="word"/></label>
+                <label><input type="radio" value="0" name="type"/>id</label>
+                <label><input type="radio" value="1" name="type"/>name</label>
+                <input type="submit" value="search"/>
+            </form>
+            <form action="/user/logout">
+                <input type="submit" value="logout"/>
+            </form>
+        </div>
+    </h2>
+</div>
+<div>
+    <a th:href="@{/addbook.html}" th:if="${session.isAdmin == 1}">add book</a>
+</div>
+<div>
+    <ul>
+        <li style="width: 290px; display: inline-block;" th:each="book : ${books}">
+            <div th:object="${book}">
+                <fieldset>
+                    <legend th:text="*{id}">ID</legend>
+                    <h3 th:text="*{name}"></h3>
+                    <p>Author: <span th:text="*{author}"></span></p>
+                    <p>Price: <span th:text="*{price}"></span>$</p>
+                    <p>Sales: <span th:text="*{sales}"></span></p>
+                    <p>Balance: <span th:text="*{balance}"></span></p>
+                    <span>
+                    <form th:action="@{/book/buy}" style="display: inline-block">
+                        <input style="width: 50px;" type="text" name="num"/>
+                        <input type="hidden" name="id" th:value="*{id}"/>
+                        <input type="submit" value="buy"/>
+                    </form></span>
+                    <span><a href="booklist.html" th:href="@{/book/shelve(id=*{id})}"
+                             th:if="${session.isAdmin} == 1">shelve</a>
+                    </span>
+                    <label th:text="${msg}"></label>
+                </fieldset>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

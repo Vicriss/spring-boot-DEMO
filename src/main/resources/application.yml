@@ -1,0 +1,9 @@
+#jdbc
+spring.datasource:
+  DriverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/bookstore?useUnicode=true&characterEncoding=utf8
+  username: wybe
+  password: 9328
+spring:
+  thymeleaf:
+    cache: false
