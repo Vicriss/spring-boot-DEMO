@@ -62,6 +62,7 @@ public class UserController {
     @RequestMapping("logout")
     public String logout(HttpSession session) {
         session.removeAttribute("uid");
+        session.removeAttribute("isAdmin");
         return "redirect:/login.html";
     }
 }

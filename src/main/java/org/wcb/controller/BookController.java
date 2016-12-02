@@ -70,6 +70,11 @@ public class BookController {
         return "redirect:/book/list";
     }
 
+    @RequestMapping("/addbook.html")
+    public String redirectToAddbook() {
+        return "addbook";
+    }
+
     @RequestMapping("/buy")
     public String sell(int id, int num, Model model) {
         Book book = bookMapper.findOne(id);

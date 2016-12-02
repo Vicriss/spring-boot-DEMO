@@ -23,7 +23,9 @@
     </h2>
 </div>
 <div>
-    <a th:href="@{/addbook.html}" th:if="${session.isAdmin == 1}">add book</a>
+    <form action="/book/addbook.html">
+        <input type="submit" value="add book"/>
+    </form>
 </div>
 <div>
     <ul>
@@ -44,6 +46,7 @@
                     </form></span>
                     <span><a href="booklist.html" th:href="@{/book/shelve(id=*{id})}"
                              th:if="${session.isAdmin} == 1">shelve</a>
+
                     </span>
                     <label th:text="${msg}"></label>
                 </fieldset>
