@@ -78,4 +78,34 @@ public class Book {
             ", balance=" + balance +
             '}';
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Book book = (Book) o;
+
+    if (id != book.id) return false;
+    if (Double.compare(book.price, price) != 0) return false;
+    if (sales != book.sales) return false;
+    if (balance != book.balance) return false;
+    if (name != null ? !name.equals(book.name) : book.name != null) return false;
+    return author != null ? author.equals(book.author) : book.author == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result;
+    long temp;
+    result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (author != null ? author.hashCode() : 0);
+    temp = Double.doubleToLongBits(price);
+    result = 31 * result + (int) (temp ^ (temp >>> 32));
+    result = 31 * result + sales;
+    result = 31 * result + balance;
+    return result;
+  }
 }

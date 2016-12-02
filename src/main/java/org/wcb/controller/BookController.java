@@ -32,10 +32,15 @@ public class BookController {
     public String search(String word, int type, Model model) {
         int id = 0;
         String name = "";
+        word = word.trim();
+        if ("".equals(word)) {
+            model.addAttribute("errMsg", "invalid data");
+            return "error";
+        }
         if (type == 0) {
             for (char c : word.toCharArray()) {
                 if (!Character.isDigit(c)) {
-                    model.addAttribute("errMsg", "invalid data");
+                    model.addAttribute("errMsg", "id must be digit");
                     return "error";
                 }
             }
@@ -48,11 +53,8 @@ public class BookController {
             Book book = bookMapper.findOne(id);
             if (book != null)
                 result.add(book);
-        } else if (name != null || "".equals(name)) {
-            result = bookMapper.findByName(name);
         } else {
-            model.addAttribute("errMsg", "invalid data");
-            return "error";
+            result = bookMapper.findByName(name);
         }
         model.addAttribute("books", result);
         return "booklist";
