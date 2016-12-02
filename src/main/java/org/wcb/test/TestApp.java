@@ -1,5 +1,6 @@
 package org.wcb.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,9 @@ public class TestApp {
 //        System.out.println(bookList.get(0));
     }
 
+    @Test
+    public void testSearch() {
+        Book book = bookMapper.findOne(113);
+        Assert.assertEquals(book.getAuthor(), "ddd");
+    }
 }
